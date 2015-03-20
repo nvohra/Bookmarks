@@ -1,0 +1,49 @@
+<div>
+    <?php echo $this->form()->openTag($form); ?>
+        <?php if ($isUpdate): ?>
+            <!-- Disabled fields will not be sent in $_POST so we have to create hidden fields -->
+            <?php echo $this->formHidden($form->get('id')); ?>
+            <?php echo $this->formHidden($form->get('date')); ?>
+        <?php endif; ?>
+        <table>
+            <tr>
+                <td colspan="2"><?php echo $this->formElementErrors($form->get('url')); ?></td>
+            </tr>
+            <tr>
+                <td><strong>Url:</strong></td>
+                <td><?php echo $this->formElement($form->get('url')) ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"><?php echo $this->formElementErrors($form->get('title')); ?></td>
+            </tr>
+            <tr>
+                <td><strong>Title:</strong></td>
+                <td><?php echo $this->formElement($form->get('title')) ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"><?php echo $this->formElementErrors($form->get('description')); ?></td>
+            </tr>
+            <tr>
+                <td><strong>Description:</strong></td>
+                <td><?php echo $this->formElement($form->get('description')) ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"><?php echo $this->formElementErrors($form->get('votes')); ?></td>
+            </tr>
+            <tr>
+                <td><strong>Votes:</strong></td>
+                <td><?php echo $this->formElement($form->get('votes')) ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"><?php echo $this->formElementErrors($form->get('idUser')); ?></td>
+            </tr>
+            <tr>
+                <td><strong>IdUser:</strong></td>
+                <td><?php echo $this->formElement($form->get('idUser')) ?></td>
+            </tr>
+            <tr align="right">
+                <td colspan="2"><?php echo $this->formElement($form->get('submit')) ?></td>
+            </tr>
+        </table>
+    <?php echo $this->form()->closeTag(); ?>
+</div>

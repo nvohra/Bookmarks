@@ -1,0 +1,54 @@
+<h1>Bookmarks</h1>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <th>Id</th>
+            <th>Url</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Tags</th>
+            <th>Date</th>
+            <th>Votes</th>
+            <th>IdUser</th>
+        </thead>
+        <?php foreach ($bookmarks as $bookmark): ?>
+        <tr>
+            <td><a href="<?php echo $this->url('application\bookmark\view', ['id' => $bookmark->getId()]) ?>"><?php echo $this->escapeHtml($bookmark->getId()); ?></td>
+            <td><?php echo $this->escapeHtml($bookmark->getUrl()); ?></td>
+            <td><?php echo $this->escapeHtml($bookmark->getTitle()); ?></td>
+            <td><?php echo $this->escapeHtml($bookmark->getDescription()); ?></td>
+            <td>
+                <table>
+                    <?php foreach($bookmark->tags as $tag): ?>
+                        <tr>
+                            <td><?php echo $tag->getName(); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </td>
+            <td><?php echo $this->escapeHtml($bookmark->getDate()); ?></td>
+            <td><?php echo $this->escapeHtml($bookmark->getVotes()); ?></td>
+            <td><?php echo $this->escapeHtml($bookmark->getIdUser()); ?></td>
+            <td><a class="btn btn-success" href="<?php echo $this->url('application\bookmark\update', array('id' => $bookmark->getId())); ?>">Update</a></td>
+            <td><a class="btn btn-danger" href="<?php echo $this->url('application\bookmark\delete', array('id' => $bookmark->getId())); ?>">Delete</a></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+
+<div class="row pagination">
+    <div class="col-md-12">
+        <?php echo $this->paginationControl(
+            $pages,
+            'Sliding',
+            'application/partial/search-pagination.phtml',
+            array('route' => 'application\bookmark\index/paginator')) ?>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-primary" href="<?php echo $this->url('application\bookmark\create') ?>">Create a new Tag</a>
+    </div>
+</div>
